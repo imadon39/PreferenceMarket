@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Preference Market</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'Market/normal.css' %}" />
+    <style type="text/css">
+
+    .Body{
+    	background: 
+		linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
+		linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
+		linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+		linear-gradient(45deg, #ECEDDC 25%, transparent 25%);	
+		background-size: 100px 100px;
+		background-color: #3bb3e0;
+    }
+
+    .btn {
+	    background-color:#3bb3e0;
+	    padding:10px;
+	    position:relative;
+	    font-size:12px;
+	    text-decoration:none;
+	    color:#fff;
+	    background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgb(44,160,202)),
+	    color-stop(1, rgb(62,184,229))
+	    );
+	    -webkit-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    -moz-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    -o-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    -webkit-border-radius: 5px;
+	    -moz-border-radius: 5px;
+	    -o-border-radius: 5px;
+	    border-radius: 5px;
+	}
+
+	.btn::before {
+	    background-color:#072239;
+	    content:"";
+	    display:block;
+	    position:absolute;
+	    width:100%;
+	    height:100%;
+	    padding-left:2px;
+	    padding-right:2px;
+	    padding-bottom:4px;
+	    left:-2px;
+	    top:5px;
+	    z-index:-1;
+	    -webkit-border-radius: 6px;
+	    -moz-border-radius: 6px;
+	    -o-border-radius: 6px;
+	    border-radius: 6px;
+	    -webkit-box-shadow: 0px 1px 0px #fff;
+	    -moz-box-shadow: 0px 1px 0px #fff;
+	    -o-box-shadow: 0px 1px 0px #fff;
+	    box-shadow: 0px 1px 0px #fff;
+	}
+
+	.btn:active {
+	    color:#156785;
+	    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+	    background:rgb(44,160,202);
+	    -webkit-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    -moz-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    -o-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    top:7px;
+	}
+
+	.btn:active::before {
+	    top:-2px;
+	}
+
+	</style>
+</head>
+
+<body>
+
+<div class="Body" align="center">
+<div class="Radius">
+<h1>Joined!</h1>
+<img src="{% static 'images/welcome.png' %}" width="150" height="150" id="Figure" />
+<div class="Button">
+<a class="btn" href="/market/{{rs.id}}/RetailStore_page">Shop Page</a>
+</div>
+</div>
+</div>
+</body>
+</html>

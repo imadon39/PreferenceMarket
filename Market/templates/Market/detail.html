@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/market.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // パッケージをロード<meta http-equiv="Refresh" content="10">
+      google.load('visualization', '1', {packages:['corechart']});
+      google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(drawPrice);   
+
+      var tdata = {{data|safe}};
+      var namedata = {{name|safe}};
+      var ndata = {{nowprice|safe}};
+      var share = {{share|safe}};
+      var count =0;
+      var P0 = {{P0|safe}};
+      var num = {{security_number|safe}};
+      var height = num*25+200;
+      var price = {{price|safe}};
+      var price_count = 0;
+
+      for( var i  = 0; i < tdata.length; i++ )
+      {
+        var t1 = tdata[i][0];
+        tdata[i][0] = new Date(t1);
+      }
+
+      // 文字列をUTF8の16進文字列に変換
+      function  string_to_utf8_hex_string (text)
+      {
+        var bytes1 = string_to_utf8_bytes(text);
+        var hex_str1 = bytes_to_hex_string(bytes1);
+        return hex_str1;
+      }
+
+
+      // UTF8の16進文字列を文字列に変換
+      function  utf8_hex_string_to_string (hex_str1)
+      {
+        var bytes2 = hex_string_to_bytes(hex_str1);
+        var str2 = utf8_bytes_to_string(bytes2);
+        return str2;
+      }
+
+      // 文字列をUTF8のバイト配列に変換
+      function  string_to_utf8_bytes  (text)
+      {
+          var result = [];
+          if (text == null)
+              return result;
+          for (var i = 0; i < text.length; i++) {
+              var c = text.charCodeAt(i);
+              if (c <= 0x7f) {
+                  result.push(c);
+              } else if (c <= 0x07ff) {
+                  result.push(((c >> 6) & 0x1F) | 0xC0);
+                  result.push((c & 0x3F) | 0x80);
+              } else {
+                  result.push(((c >> 12) & 0x0F) | 0xE0);
+                  result.push(((c >> 6) & 0x3F) | 0x80);
+                  result.push((c & 0x3F) | 0x80);
+              }
+          }
+          return result;
+      }
+
+      // バイト値を16進文字列に変換
+      function  byte_to_hex (byte_num)
+      {
+        var digits = (byte_num).toString(16);
+          if (byte_num < 16) return '0' + digits;
+          return digits;
+      }
+
+      // バイト配列を16進文字列に変換
+      function  bytes_to_hex_string   (bytes)
+      {
+        var result = "";
+
+        for (var i = 0; i < bytes.length; i++) {
+          result += byte_to_hex(bytes[i]);
+        }
+        return result;
+      }
+
+      // 16進文字列をバイト値に変換
+      function  hex_to_byte   (hex_str)
+      {
+        return parseInt(hex_str, 16);
+      }
+
+      // バイト配列を16進文字列に変換
+      function  hex_string_to_bytes   (hex_str)
+      {
+        var result = [];
+
+        for (var i = 0; i < hex_str.length; i+=2) {
+          result.push(hex_to_byte(hex_str.substr(i,2)));
+        }
+        return result;
+      }
+
+      // UTF8のバイト配列を文字列に変換
+      function  utf8_bytes_to_string  (arr)
+      {
+          if (arr == null)
+              return null;
+          var result = "";
+          var i;
+          while (i = arr.shift()) {
+              if (i <= 0x7f) {
+                  result += String.fromCharCode(i);
+              } else if (i <= 0xdf) {
+                  var c = ((i&0x1f)<<6);
+                  c += arr.shift()&0x3f;
+                  result += String.fromCharCode(c);
+              } else if (i <= 0xe0) {
+                  var c = ((arr.shift()&0x1f)<<6)|0x0800;
+                  c += arr.shift()&0x3f;
+                  result += String.fromCharCode(c);
+              } else {
+                  var c = ((i&0x0f)<<12);
+                  c += (arr.shift()&0x3f)<<6;
+                  c += arr.shift() & 0x3f;
+                  result += String.fromCharCode(c);
+              }
+          }
+          return result;
+      }
+
+
+      function drawChart() {
+        var dataTable= new google.visualization.DataTable();
+        dataTable.addColumn('datetime','日時');
+        for (var j =0; j < namedata.length;j++)
+        {
+          dataTable.addColumn('number',utf8_hex_string_to_string(namedata[j]));
+        }
+        dataTable.addRows(tdata);
+        var options = {
+          hAxis: {maxValue: new Date({{ctime}}),minValue: new Date({{stime}})},
+          vAxis:{maxValue: 1.0,minValue: 0.5},
+          legend: 'bottom',
+        };
+
+        chart = new google.visualization.LineChart(document.getElementById('pricehistory'));
+
+               
+          // 描画を実行
+            chart.draw(dataTable,options); 
+       }
+
+      function drawPrice() {
+        var priceTable= new google.visualization.DataTable();
+        var price = new Array();
+        priceTable.addColumn('string','security');
+        priceTable.addColumn('number','予想販売比率');
+       for (var j =0; j < namedata.length;j++)
+         {
+            price[j] = new Array();
+            price[j][0] = utf8_hex_string_to_string(namedata[j]);
+            price[j][1] = ndata[j];
+         }
+
+        priceTable.addRows(price);
+
+        var options = {
+          colors:['black'],
+          legend: { position: 'in'},
+          vAxis:{maxValue: 1.0,minValue: 0.5},
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('price'));
+        chart.draw(priceTable, options);
+       }
+
+      function buy_win() {
+        var subWun = window.open("/market/{{market.id}}/buy_transaction/", "mywindow2", "width=400,height=" + height + ", menubar=no, toolbar=no, scrollbars=yes");
+      }
+
+      function sell_win() {
+        var subWun = window.open("/market/{{market.id}}/sell_transaction/", "mywindow2", "width=400,height=" + height + ", menubar=no, toolbar=no, scrollbars=yes");
+      }
+
+      function set2fig(num) {
+        // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+        var ret;
+        if( num < 10 ) { ret = "0" + num; }
+        else { ret = num; }
+        return ret;
+      }
+
+      function showClock() {
+      var nowTime = new Date();
+      var nowMonth = set2fig(nowTime.getMonth()+1) ;  // 1月が0スタート仕様
+      var nowDate =  set2fig(nowTime.getDate());
+      var nowYear = nowTime.getFullYear();
+      var nowHour = set2fig(nowTime.getHours());
+      var nowMin = set2fig( nowTime.getMinutes() );
+      var nowSec = set2fig( nowTime.getSeconds() );
+      var msg = " Now : " + nowYear + "-" + nowMonth + "-" + nowDate + " " +  nowHour + ":" + nowMin + ":" + nowSec;
+      document.getElementById("RealtimeClockArea").innerHTML = msg;
+      }
+
+
+      setInterval('showClock()',1000);
+
+ 
+        </script>
+</head>
+
+<body onresize="chart.draw(dataTable,options);" link="black" vlink="black">
+
+<div class="Body" >
+
+<div class = "Head">
+<div class = "Title">
+<h1>MARKET</h1>
+</div>
+<div class="Timeinfo" align="left">
+<p>
+<i class="fa fa-clock-o"></i><a id="RealtimeClockArea"></a>
+<i class="fa fa-clock-o"></i> Close : {{close_time}} 
+<i class="fa fa-clock-o"></i> End : {{end_time}} 
+</p>
+</div>
+<div class = "shoppage" align ="right">
+<a href="/market/{{rs.id}}/{{ market.id }}/market_tutorial"><i class="fa fa-question-circle"></i> How to Play</a>
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOP PAGE</a>
+</div>
+</div>
+
+<div class="Top">
+
+<div class="Figure" align="center">
+<div class="balloon">
+<p>{{market.name}}</p>
+</div>
+<div class="person">
+<img src= "/static/images/shop.png/" width="100" height="100"/>
+</div>
+</div>
+
+<div class="GameInfo">
+<div class="action" align="center">
+<div class="Buy">
+<a href="javascript:buy_win();">
+<div class="Radius">
+BUY
+</div>
+</a>
+</div>
+<div class="Sell">
+<a href="javascript:sell_win();">
+<div class="Radius">
+SELL
+</div>
+</a>
+</div>
+</div>
+<div class="Info" align="center">
+<div class="point">
+<p> - Your Points - <br>{{player.point}}</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="PriceHistory">
+
+<div class="History" align="center" id="pricehistory">
+</div>
+<div class="Price" id="price">
+</div>
+
+</div>
+
+<div class="Table" align="center">
+
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-center">商品</th>
+{% for number in count %}
+  <th class="text-center">{{number|AttributeOrder:market.product}}</th>
+{% endfor %}
+<th class="text-center">売値</th>
+<th class="text-center">取り分(1ロット)</th>
+<th class="text-center">仕入れ値(1ロット)</th>
+<th class="text-center">在庫(ロット)</th>
+</tr>
+</thead>
+<tbody class="table-honer">
+{% for s in security %}
+  <tr>
+  <td class="text-center">{{s.product_name}}</td>
+  {% for level in s.attributes %}
+    <td class="text-center">{{level}}</td>
+  {% endfor %}
+  <td class="text-center">{{s.selling_price}}</td>
+  <td class="text-center">1000</td>
+  <script>
+  var s_price = {{s.gross_margin}} + price[price_count];
+  s_price = Math.round( s_price * 100 ) / 100 ;
+  price_count++;
+  </script>
+  <td class="text-center"><script>document.write(s_price);</script></td>
+  <td class="text-center">{{ s|StockFilter:player}}</td>
+
+  </tr>
+{% endfor %}
+</table>   
+
+</div>
+
+</div>
+</body>
+
+

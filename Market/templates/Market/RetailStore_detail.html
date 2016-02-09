@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/detail.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+	<link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body link="black" vlink="black">
+
+<div class="Body">
+
+<div class = "Head">
+<div class = "Title">
+<h1>SHOP LIST</h1>
+</div>
+<div class = "Mypage" align ="right">
+<a href="/market/mypage"><i class="fa fa-home"></i> MYPAGE</a>
+</div>
+</div>
+
+<div class = "DetailList">
+
+{% for rs in rs_detail %}
+
+<div class = "Detail" align="center">
+
+<h1>{{ rs.name }}</h1>
+
+<div class="Data">
+<div class = "Figure" align ="center">
+<img src= "{{rs.figure.img_url}}/{{rs.figure.name}}/{{rs.color.img_url}}"/>
+</div>
+<div class = "Imformation" align="left">
+<h2>Area : {{rs.area.name}}</h2>
+<h2>Attribute : {{rs.area.attribute}}</h2>
+<p>{{rs.area.description}}</p>
+</div>
+
+</div>
+<div class = "Button" align ="center">
+<a class="btn" href="/market/{{ rs.id }}/RetailStore_page/">Choice</a>
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>

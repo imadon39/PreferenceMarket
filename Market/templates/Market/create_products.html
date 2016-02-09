@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/create_products.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<script>
+var count = 0;
+var str = "ID";
+
+function count_ID(){
+    count++;
+}
+
+
+function name_ID(){
+    return(str + count);
+}
+
+function add(){
+    count_ID();
+    var ID = name_ID();
+    var div_element = document.createElement("div");
+    div_element.innerHTML = "<div class='Add' id="+ID+"><label for='NewAtt'>Attribute</label><br><input type='text' name='NewAtt'><br><label for='NewLevel'>Level</label><br><input type='text' name='NewLevel'><br><input class='btn' id="+ID+" type='button' onclick='javascript:Delete(this);' value='Delete'></div>";
+    var parent_object = document.getElementById("NewAttribute");
+    parent_object.appendChild(div_element);
+}
+
+function selectAddValue(obj){
+    if(obj.value == "add"){
+        var addVal = prompt('新アイディアを入力してください','');
+        obj.options.length++;
+        obj.options[obj.options.length-1].value = addVal;
+        obj.options[obj.options.length-1].text = addVal;
+        obj.options[obj.options.length-1].selected = true;
+    }
+}
+
+function Delete(obj){
+    var id_name = obj.id;
+    var dom_object = document.getElementById(id_name);
+    var dom_object_parent = dom_object.parentNode;
+    dom_object_parent.parentNode.removeChild(dom_object_parent);
+}
+
+function ShopLine(){
+    document.getElementById('Data').innerHTML = "<div class='ShopLines' align='center'><h1>SHOP LINES</h1></div><table class='table-fill'><thead><tr><th class='text-center'>Product Name</th>{% for attribute in attribute_list %}<th class='text-center'>{{attribute.name}}</th>{% endfor %}</tr></thead><tbody class='table-honer'>{% for s in security %}<tr><td class='text-center'>{{s.product_name}}</td>{% for level in s.attributes %}<td class='text-center'>{{level}}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>";
+}
+
+
+function Attributes(){
+    document.getElementById('Data').innerHTML ="<div class='ExistingAttributes'align ='center'><h1>ATTRIBUTES</h1><div class='TableSet'>{% for attribute in attribute_list %}<div class='Table' align='center'><table class='table-fill'><thead><tr><th class='text-center'>{{attribute.name}}</th></tr></thead><tbody class='table-honer'>{% for level in attribute|LevelFilter %}<tr><td class='text-center'>{{level.name}}</td></tr>{% endfor %}</tbody></table></div>{% endfor %}</div></div>";
+}
+
+function Target(){
+    document.getElementById('Data').innerHTML ="<div class = 'Target' ><h1>TARGET</h1><div class = 'Figure' align ='right'><img src= '{{area.gender_img_url}}' width='180' height='180' id='gender'/></div><div class = 'TargetInfo' align ='left'><h2>Area:{{ area.name }}</h2><h2>Age : {{area.age_lower}} - {{area.age_upper}}</h2><h2>Attribute : {{area.attribute}}</h2><p>{{area.description}}</p></div></div>";
+}
+
+</script>
+
+
+</head>
+
+<body link="black" vlink="black">
+
+<div class="Body">
+
+<div class = "Head">
+<div class="Title">
+<h1>CREATE PRODUCTS</h1>
+</div>
+<dic class = "Point" align="center">
+<p><i class="fa fa-money"></i> Your Points : {{player.point}} <i class="fa fa-money"></i></p>
+</dic>
+<div class="shoppage" align="right">
+<a href="/market/{{rs.id}}/{{market.id}}/ideaBox_tutorial"><i class="fa fa-question-circle"></i> How to Play</a>
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOP PAGE </a>
+</div>
+</div>
+
+<form action="/market/{{rs.id}}/{{market.id}}/created/" method="post" name="form1">
+{% csrf_token %}
+
+<div class="NewIdea">
+
+<div class ="NewIdeaHead">
+<div id ="heading04" class="Provide" align="center">
+Provide Your Idea
+</div>
+<div class="Decide" align="left">
+<a href="#" class="btn" onclick="document.form1.submit();">
+Done
+</a>
+</div>
+<div class="Decide" align="left">
+<a href="/market/{{rs.id}}/{{ market.id }}/create_products/" class="btn">
+Reset
+</a>
+</div>
+<div class="Error" align="left">
+{% if error_message %}
+
+    {% ifequal error_message "error1" %}
+        <p>属性と水準の数が合いません</p>
+    {% endifequal %}
+    {% ifequal error_message "error2" %}
+        <p>現在売り出し中の商品です</p>
+    {% endifequal %}
+    {% ifequal error_message "error3" %}
+        <p>すでに提出済みです</p>
+    {% endifequal %}
+    {% ifequal error_message "error4" %}
+        <p>すでにある属性です</p>
+    {% endifequal %}
+    {% ifequal error_message "money_error" %}
+        <p>ポイントが足りません</p>
+    {% endifequal %}
+{% else %}
+    <p>500ポイントで提出できます　採用されれば10000ポイントゲット！</p>
+{% endif %}
+</div>
+</div>
+
+{% for attribute in attribute_list %}
+
+    <div class="Attribute" align="center">
+    <div class="Select" align="center">
+    <p>{{attribute.name}}</p>
+    <label>
+    <select onchange="selectAddValue(this)" name="levels">
+    {% for level in attribute|LevelFilter %}
+        <option>{{level.name}}</option>
+    {% endfor %}
+    <option value="add">新アイディアを追加</option>
+    </select>
+    </label>
+    </div>
+
+{% endfor %}
+
+    <div class="NewAttribute">
+    <div id="NewAttribute">
+    </div>
+    <div class="Button" align="center">
+    <p>New Attribute</p>
+    <a href="javascript:add();" class="btn">
+    Add
+    </a>
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div class="Information">
+<div class="SelectBotton">
+<div id ="heading04">
+Information
+</div>
+<a href="javascript:ShopLine();">
+<div class="Radius" >
+Shop Lines
+</div>
+</a>
+<a href="javascript:Attributes();">
+<div class="Radius">
+Attributes
+</div>
+</a>
+<a href="javascript:Target();">
+<div class="Radius">
+Target
+</div>
+</a>
+</div>
+
+<div class = "Data" id ="Data">
+</div>
+
+</div>
+
+</div>
+</form>
+</div>
+</body>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/shop_detail.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+	<link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body link="black" vlink="black">
+
+<div class = "Head">
+<div class = "Title">
+<h1>OPEN NEW SHOP</h1>
+</div>
+<div class = "Mypage" align ="right">
+<a href="/market/mypage"><i class="fa fa-home"></i> MYPAGE </a>
+</div>
+</div>
+
+<div class = "DetailList" align="center">
+<h1><a style="color:hotpink;">C</a>hoice Area</h1>
+{% for area in new_areas %}
+	<div class = "Detail" align="center">
+	<h1>{{ area.name }}</h1>
+	<div class="Data">
+	<div class = "Figure" align ="center">
+	<img src= "{{area.gender_img_url}}">
+	</div>
+	<div class = "Imformation" align="left">
+	<h2>Age : {{area.age_lower}} - {{area.age_upper}}</h2>
+	<h2>Attribute : {{area.attribute}}</h2>
+	<p>{{area.description}}</p>
+	</div>
+	</div>
+	<div class = "Button" align ="center">
+	<a class="btn" href="/market/{{ area.id }}/choice_shop/">Choice</a>
+	</div>
+	</div>
+{% endfor %}
+</div>
+
+</div>
+
+</body>
+</html>

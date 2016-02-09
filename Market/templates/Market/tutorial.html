@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/tutorial.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+<script>
+
+var url1 = "/static/images/tutorial/スライド";
+var url2 = ".png/";
+var page = 0;
+
+function NextStory(){
+	page++;
+	if(page==45){
+		document.getElementById('Story').innerHTML = "<div class = 'Figure'><img src="+url1+page+url2+"></div><div class='Button' align='center'><p><a class='btn' onclick='javascript:Story1();'>Back</a>  <a class='btn' href='/Top'>Play</a></p></div>";
+	}
+	else{
+    	document.getElementById('Story').innerHTML = "<div class = 'Figure'><img src="+url1+page+url2+"></div><div class='Button' align='center'><p><a class='btn' onclick='javascript:BackStory();'>Back</a>  <a class='btn' onclick='javascript:NextStory();'>Next</a></p></div>";
+    }
+}
+
+function BackStory(){
+	page--;
+	if(page==1){
+		document.getElementById('Story').innerHTML = "<div class = 'Figure'><img src="+url1+page+url2+"></div><div class='Button' align='center'><p><a class='btn' href='/Top'>Back</a>  <a class='btn' onclick='javascript:NextStory();'>Next</a></p></div>";
+	}
+    else{
+    	document.getElementById('Story').innerHTML = "<div class = 'Figure'><img src="+url1+page+url2+"></div><div class='Button' align='center'><p><a class='btn' onclick='javascript:BackStory();'>Back</a>  <a class='btn' onclick='javascript:NextStory();'>Next</a></p></div>";
+    }
+}
+
+</script>
+
+
+</head>
+
+<body link="black" vlink="black">
+
+<div class="Body" align="center">
+
+<div class="Story" id ="Story">
+<div class = "Figure">
+<img src= '/static/images/tutorial/スライド1.png/'>
+</div>
+<div class='Button' align="center">
+<p>
+<a class='btn' href='/Top'>Back</a>  
+<a class='btn' onclick='javascript:NextStory();'>Next</a></p>
+</div>
+
+</div>
+</div>
+
+</body>
+
+

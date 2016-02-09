@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preferene Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/give_name.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+<div class = "Head">
+<div class = "Title">
+<h1>OPEN NEW SHOP</h1>
+</div>
+<div class = "Mypage" align ="right">
+<a href="/market/mypage"><i class="fa fa-home"></i> MYPAGE </a>
+</div>
+</div>
+
+
+<div class = "Body" align ="center">
+<h1>Name a Your New <a style="color:hotpink;">S</a>hop</h1>
+
+<img src= "{{shop.img_url}}/{{shop.name}}/{{color.img_url}}" width="150" height="150"/>
+
+
+{% if form.errors %}
+    <form action="/market/{{area.id}}/{{shop.id}}/{{color.id}}/open_success/" method="post" name="form1">
+    {% csrf_token %}
+
+        {%  for field in form %}
+             
+            {% for error in field.errors %}
+             
+                <p style="color:red">{{ error|escape }}</p>
+        
+            {% endfor %}
+                
+                {{field}}<br>
+                
+               
+        {% endfor %}
+    <div class = "Button" align ="center">
+    <a class="btn" href="#" onclick="document.form1.submit();">Done</a>　
+    <a class="btn" href="/market/mypage" value="Cancel">Cancel</a>
+    </form>
+    </div>
+
+{% else %}
+
+
+<form action="/market/{{area.id}}/{{shop.id}}/{{color.id}}/open_success/" method="post" name="form1">
+{% csrf_token %}
+
+<input type="text" name="name">
+
+<div class = "Button" align ="center">
+
+<a class="btn" href="#" onclick="document.form1.submit();">Done</a>　
+<a class="btn" href="/market/mypage" >Cancel</a>
+</form>
+</div>
+
+{% endif %}
+</div>
+
+</body>
+</html>
+
+

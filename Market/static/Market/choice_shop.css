@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+a { text-decoration: none;}
+a:hover { text-decoration: none;}
+
+body{
+        margin: 0;
+        font-family:
+            'M+ C Type-1 (basic latin) Regular',
+            'M+ Type-1 (general-j) Regular', sans-serif;
+    }
+
+.Head {
+            width: 100%;
+            height: 50px;
+            border-bottom: dashed gray; 
+            border-width: 0 0 3px;
+            font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.Head:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+
+
+.Title{
+    float:left;
+    width:70%;
+    height:100%;
+}
+
+.Title h1 {     
+                font-size : 40px;
+                margin:0px;
+                margin-left: 10px;
+            }
+
+.Mypage {
+            float:left; 
+            width:27%;
+            margin-top:20px;
+            margin-right: 3%;        
+}
+
+.Mypage a {
+        font-size:1.5em;
+        margin-left:0.5em;
+        color:black;
+        }
+
+.Mypage a:hover{
+    color:deeppink;
+}
+
+.Detail:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Detail {
+    height: auto;
+    width: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.Detail h1{
+    font-size:40px;
+    margin-bottom: 50px;
+}
+
+.Detail img {
+        padding-top: 50px;
+        padding-bottom: 40px; 
+    }
+
+
+.Shop  {       
+        float:left;
+        height: 400px;
+        width: -webkit-calc(100% / 3);
+        width: calc(100% / 3);
+        background-color: white;
+}
+
+.btn {
+    position:relative;
+    background-color:#6fba26;
+    padding:5px;
+    padding-right:15px;
+    padding-left:15px;
+    font-size:15px;
+    text-decoration:none;
+    color:white;
+    background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
+    box-shadow: inset 0px 1px 0px #6fba26, 0px 6px 0px green;
+    border-radius: 5px;
+}
+
+.btn:active {
+    top:7px;
+    background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+    box-shadow: inset 0px 1px 0px #6fba26, inset 0px -1px 0px green;
+    color: #156785;
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+    background: rgb(44,160,202);
+}
+
+.btn::before {
+    background-color:#072239;
+    content:"";
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    padding-left:2px;
+    padding-right:2px;
+    padding-bottom:4px;
+    left:-2px;
+    top:5px;
+    z-index:-1;
+    border-radius: 6px;
+    box-shadow: 0px 1px 0px #fff;
+}
+
+.btn:active::before {
+    top:-2px;
+}

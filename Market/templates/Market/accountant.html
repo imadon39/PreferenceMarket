@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/accountant.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body link="black" vlink="black">
+
+<div class = "Head">
+<div class="Title">
+<h1>ACCOUNTANT</h1>
+</div>
+<div class="shoppage" align="right">
+<a href="/market/mypage"><i class="fa fa-home"></i> MYPAGE  </a>
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOP PAGE </a>
+</div>
+</div>
+
+
+<div class="MarketSelect">
+<div class="MarketHead">
+<div id ="heading04" class="heading">
+Select Market
+</div>
+</div>
+
+<div class="Select" align="center">
+{% for product in product_list %}
+    <a href="/market/{{rs.id}}/{{product.id}}/accountant_table" target="table_box">
+    <div class="Radius" >
+    {{product.name}}
+    </div>
+    </a>   
+{% endfor %}
+</div>
+</div>
+
+<iframe width="100%" height="450px" name="table_box" frameborder="0"></iframe>
+
+</div>
+</body>
+</html>

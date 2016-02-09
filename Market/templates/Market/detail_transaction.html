@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Transaction</title>
+    <meta name ="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/detail_transaction.css' %}" />
+
+    <script>
+    var price = {{price|safe}};
+    var count = 0
+    </script>
+
+</head>
+
+<body>
+
+<div class = "Body">
+<div class = "Security">
+
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="/market/{{market.id}}/transaction/" method="post">
+{% csrf_token %}
+
+<ul>
+{% for security in market.security_set.all %}
+
+    <input type="radio" name="security" id="security{{ forloop.counter }}"
+     value="{{ security.id }}" />
+    <label for="security{{ forloop.counter }}">{{ security.product_name }}</label>
+    <script>
+    document.write(price[count]);
+    count +=1;
+    </script>
+    <br>
+{% endfor %}
+
+
+</ul>
+</div>
+
+<div class="Information">
+
+
+<ul>
+{% if form.errors %}
+
+    {%  for field in form %}
+        {% for error in field.errors %}
+            <p style="color:red">{{ error|escape }}</p>
+        {% endfor %}
+    
+        {{field.label_tag}} {{field}}
+
+     {% endfor %}
+
+{% else %}
+
+<label>amount:<input type="number" name="amount"></label><br>
+<label for="action">action:</label>
+<input type="radio" name="action" value = "b" />  <label>buy</label>
+<input type="radio" name="action" value = "s" /> <label>sell</label>
+
+</ul>
+</div>
+
+{% endif %}
+
+<div class="Button" align="center">
+
+<input class="btn" type="submit" value="Done" />　
+<input class="btn" type="reset" value="Cancel" />
+
+</div>
+
+<div class="Cancel" align="right">
+<a href="/market/{{rs.id}}/RetailStore_page" onclick="window.opener.location.reload(),window.close()">Close</a>
+</div>
+
+</form>
+</div>
+</body>
+</html>

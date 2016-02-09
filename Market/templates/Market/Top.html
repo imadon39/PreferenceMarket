@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/Top.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<body>
+
+<div class="Preference">
+<div class="foo">
+  <span class="letter" data-letter="P">P</span>
+  <span class="letter" data-letter="R">R</span>
+  <span class="letter" data-letter="E">E</span>
+  <span class="letter" data-letter="F">F</span>
+  <span class="letter" data-letter="E">E</span>
+  <span class="letter" data-letter="R">R</span>
+  <span class="letter" data-letter="E">E</span>
+  <span class="letter" data-letter="N">N</span>
+  <span class="letter" data-letter="C">C</span>
+  <span class="letter" data-letter="E">E</span>
+</div>
+</div>
+<div class="Market">
+<div class="foo">
+	<style>
+    #gLink:before {
+        color: #f83b66;
+    }
+     </style>
+  <span class="letter" data-letter="M" id="gLink">M</span>
+  <span class="letter" data-letter="A">A</span>
+  <span class="letter" data-letter="R">R</span>
+  <span class="letter" data-letter="K">K</span>
+  <span class="letter" data-letter="E">E</span>
+  <span class="letter" data-letter="T">T</span>
+</div>
+</div>
+
+
+<div class="Body">
+
+<div class = "Play" align = "center">
+<div class = "Login" align ="center">
+<h1>Login</h1>
+<a href="/login"><i class="fa fa-sign-in"></i></a>
+</div>
+<div class = "Registration" align = "center">
+<h1>New Registration</h1>
+<a href="/create_new_user"><i class="fa fa-user-plus"></i></a>
+</div>
+<div class = "Tutorial" align = "center">
+<h1>How to Play</h1>
+<a href="/tutorial"><i class="fa fa-question-circle"></i></a>
+</div>
+</div>
+<div class="Figure">
+<img src= "/static/images/Top.png/"/>
+</div>
+
+</div>
+
+</body>
+</html>

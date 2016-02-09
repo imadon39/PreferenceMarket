@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/stock.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+<div class="Body">
+
+<div class="Head">
+<div class="Title">
+<h1>PURCHASE STOCKS</h1>
+</div>
+<div class="shoppage" align="right">
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOP PAGE </a>
+</div>
+</div>
+
+{% if open_market_list %}
+
+    <div class = "open" align="center">
+    <h1><a style="color:hotpink;">O<a>pen Makets</h1>
+    </div>
+
+
+    <div class="openshops">
+    {% for market in open_market_list %}
+
+        <div class="Radius" align="center">
+        <div class="shopname">
+        <h2>{{market.name}}</h2>
+        </div>
+        {% if participation|RewardCheckd:market %}
+            <div class="closetime">
+            Close Time<br>
+            {{market.close_time}}
+            </div>
+            <div class="Button">
+            <a class="btn" href="/market/{{rs.id}}/{{ market.id }}/detail/">Purchase Stocks</a>
+            </div>
+        {% else %}
+            <div class="closetime">
+            <i class="fa fa-exclamation-triangle"></i>
+            Check Rewards
+            <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            <div class="Button">
+            <a class="btn" href="/market/{{rs.id}}/{{ market.id }}/check_reward/">Check</a>
+            </div>
+        {% endif %}
+        </div>
+
+    {% endfor %}
+    </div>
+
+{% endif %}
+
+{% if close_market_list or end_market_list %}
+
+    <div class = "close" align="center">
+    <h1>Close <a style="color:hotpink;">M<a>arkets</h1>
+    </div>
+
+    {% for market in close_market_list %}
+
+        <div class="closeshops">
+        <div class="Radius" align="center">
+        <div class="shopname">
+        <h2>{{market.name}}</h2>
+        </div>
+
+        <div class="info">
+        集計中です
+        </div>
+
+        </div>
+
+    {% endfor %}
+
+
+    {% for market in end_market_list %}
+
+        {% if not participation|RewardCheckd:market %}
+            <div class="Radius" align="center">
+            <div class="shopname">
+            <h2>{{market.name}}</h2>
+            </div>
+            <div class="info">
+            <p>
+            <i class="fa fa-exclamation-triangle"></i>
+            結果をチェック
+            <i class="fa fa-exclamation-triangle"></i>
+            </p>
+            <a style="margin-top:20px;" class="btn" href="/market/{{rs.id}}/{{ market.id }}/check_reward_end/">Check</a>
+            </div>
+            </div>
+
+        {% else %}
+
+            <div class="Radius" align="center">
+            <div class="shopname" align="center">
+            <h2>{{market.name}}</h2>
+            </div>
+            <div class="info">
+            終了しました
+            </div>
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+    </div>
+
+{% endif %}
+        
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>PreferenceMarket</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/create_new_user.css' %}" />
+
+</head>
+
+<body>
+
+{% if form.errors %}
+    <fieldset>
+    <h1>Registration</h1>
+    <form method="post" action="../create_new_user_confirm/">
+    {% csrf_token %}
+    
+    {%  for field in form %}
+        {% for error in field.errors %}
+            <p style="color:red">{{ error|escape }}</p>
+        {% endfor %}
+
+        {% ifequal field.label "username" %}
+            <input type="text" placeholder="Username" name="username" required>
+        {% endifequal %}
+        {% ifequal field.label "age" %}
+            <input type="number" placeholder="Age" name="age" min=0 required>
+        {% endifequal %}
+        {% ifequal field.label "gender" %}
+            <input type="radio" name="gender" value= "m" /><label >male</label>
+            <input type="radio" name="gender" value="f" /> <label >female</label>
+        {% endifequal %}
+        {% ifequal field.label "email" %}
+        <input type="email" placeholder="Email" name="email">
+        {% endifequal %}  
+        {% ifequal field.label "password1" %}
+            <input type="password" placeholder="Password" name="password1" required>
+        {% endifequal %}
+        {% ifequal field.label "password2" %}
+            <input type="password" placeholder="Comfirm your password" name="password2" required>
+        {% endifequal %}
+
+    {% endfor %}
+    <input type="submit" value="Enter">
+    <input type="button" onclick="location.href='../create_new_user_confirm/';" value="Reset">
+    </form>
+    </fieldset>
+
+{% else %}
+    <fieldset>
+        <h1>Registration</h1>
+        <form method="post" action="../create_new_user_confirm/">
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name="username" required>
+        <input type="number" placeholder="Age" name="age" min=0 required>
+        <input type="radio" name="gender" value= "m" /><label >male</label>
+        <input type="radio" name="gender" value="f" /> <label >female</label>
+        <input type="email" placeholder="Email" name="email">
+        <input type="password" placeholder="Password" name="password1" required>
+        <input type="password" placeholder="Comfirm your password" name="password2" required>
+        <input type="submit" value="Enter">
+        <input type="button" onclick="location.href='../create_new_user';" value="Reset">
+        </form>
+    </fieldset>
+
+{% endif %}
+
+<div class = "Info" align="center">
+<p>メールアドレスの入力は任意です。</p>
+<p>ランキング上位の方に連絡する際に使用し、それ以外の目的では使用しません。</p>
+<p>実験終了後に情報は削除します。</p>
+</div>
+</body>

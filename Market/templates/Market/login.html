@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/login.css' %}" />
+
+</head>
+
+<body>
+
+{% if form.errors %}
+    <fieldset>
+    <h1>Login</h1>
+    <form method="post" action="/market/login_success/">
+    {% csrf_token %}
+    
+    {%  for field in form %}
+        {% for error in field.errors %}
+            <p style="color:red">{{ error|escape }}</p>
+        {% endfor %}
+
+        {% ifequal field.label "username" %}
+            <div class="iconUser"></div>
+            <input type="text" placeholder="Username" name="username" required>
+        {% endifequal %}
+        {% ifequal field.label "password" %}
+            <div class="iconPassword"></div>
+            <input type="password" placeholder="Password" name="password" required>
+        {% endifequal %}
+
+    {% endfor %}
+    <input type="submit" value="Enter">
+    </form>
+    </fieldset>
+
+{% else %}
+          
+    <fieldset>
+        <h1>Login</h1>
+        <form method="post" action="/market/login_success/">
+        {% csrf_token %}
+          <div class="iconUser"></div>
+            <input type="text" placeholder="Username" name="username" required>
+        <div class="iconPassword"></div>
+        <input type="password" placeholder="Password" name="password" required>
+        <input type="submit" value="Enter">
+        </form>
+    </fieldset>
+
+{% endif %}
+
+
+</body>

@@ -1,0 +1,405 @@
+@charset "UTF-8";
+
+html {
+    font-size : 60%; 
+}
+ 
+@media screen and (min-width :1000px){
+    html{ font-size : 80%;} 
+}
+ 
+@media screen and (min-width : 1400px) {
+    html{ font-size : 100%}; 
+}
+
+body{
+        font-family:
+        'M+ C Type-1 (basic latin) Regular',
+        'M+ Type-1 (general-j) Regular', sans-serif;
+
+    }
+
+a { text-decoration: none;}
+a:hover { text-decoration: none;}
+
+
+.Body {            
+            width: auto;
+            height: auto;
+            background-color: white;
+            padding-bottom: 1.25em;
+}
+
+.Head {
+            width: 100%;
+            height: 3.125em;
+            border-bottom: dashed gray; 
+            border-width: 0 0 0.1875em;
+}
+
+.Head:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Title{
+    float:left;
+    width:10%;
+    height:100%;
+}
+
+.Title h1 {     
+                font-size : 2.5em;
+                margin:0px;
+                margin-left: 0.5em;
+                font-family: 'Open Sans Condensed', sans-serif;
+            }
+
+.Timeinfo{
+  float:left;
+  width:60%;
+  height:100%;
+  font-size: 1em;
+}
+
+.shoppage {
+            float:left; 
+            width:27%;
+            margin-top:1.25em;
+            margin-right: 3%;        
+}
+.shoppage a {
+        font-size:1.5em;
+        margin-left:0.5em;
+        color:black;
+        }
+
+.shoppage a:hover{
+    color:deeppink;
+}
+.Top:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Top {
+    height: auto;
+    width: 100%;
+    background-color:white;
+    margin-top: 5px;
+}
+
+.Figure{
+    float: left;
+    margin-top:10px;
+    margin-bottom: -10px;
+    height: 100%;
+    width: 30%;
+    -webkit-transition: 0.5s ease-in-out;
+}
+
+.Figure:hover{
+   -moz-transform: rotate(-360deg);
+  -webkit-transform: rotate(-360deg);
+  -o-transform: rotate(-360deg);
+  -ms-transform: rotate(-360deg);
+}
+
+.GameInfo:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.GameInfo{
+    float:left;
+    height: 100%;
+    width: 70%;
+}
+
+.Info{
+        float:left;
+        height: auto;
+        width:45%;
+        padding-top: 25px;
+        padding-right: 5%;
+        -webkit-transition: 0.3s ease-in-out;
+}
+
+.Info{
+        float:left;
+        height: auto;
+        width:45%;
+        padding-top: 25px;
+        padding-right: 5%;
+        -webkit-transition: 0.3s ease-in-out;
+}
+
+.point{
+    height: auto;
+    width: 100%;
+    font-size : 25px;
+}
+
+.point p{
+  margin:0px;
+  margin-top: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+}
+
+.point p:hover{
+  font-size:45px;
+  color:deeppink;
+}
+
+.Info:hover{
+  padding-top: 0px;
+}
+
+.action{
+    float:left;
+    height: auto;
+    width: 50%;
+    padding-top: 20px;
+}
+
+.action:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Buy{
+  float:left;
+  margin-left: 5%;
+  width:45%;
+}
+
+.Sell{
+  float:left;
+  margin-right: 10%;
+  width:40%;
+}
+
+
+.Radius{
+    border-radius: 100%;
+    border-style: solid;
+    border-color: black;
+    height: 60px;
+    width: 100px;
+    font-size: 15px;
+    font-weight: 300; 
+    padding-top: 40px;
+    margin: 0px;
+    background-color:darkgray;"
+}
+
+.Radius:hover {
+ /* 変化後の色 */
+ background-color: #f83b66;
+}
+
+
+.PriceHistory:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.PriceHistory{
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.History{
+    float:left;
+    width: -webkit-calc(70% + 35px);
+    width: calc(70% + 35px);
+    height: auto;
+    margin-top: -20px;
+    margin-left: -30px;
+    margin-right: -5px;
+}
+
+.Price{
+  float:left;
+  width: -webkit-calc(35% + 30px);
+  width: calc(35% + 30px);
+  height: auto;
+  margin-right: -30px;
+  margin-left: -5%;
+  margin-top: -20px;
+}
+
+.Table{
+    margin:3%;
+    width:94%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
+.balloon {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    min-width: 110px;
+    height: 40px;
+    color: #F6F6F6;
+    line-height: 50px;
+    text-align: center;
+    background: darkgray;
+    border-radius: 60px;
+    z-index: 0;
+}
+
+.balloon p{
+  margin: 0px;
+  margin-top: -5px;
+}
+
+.balloon:before {
+   content: "";
+    position: absolute;
+    bottom: -17px; 
+    margin-left: 0;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: darkgray;
+    border-radius: 50%;
+    z-index: 0;
+}
+.balloon:after {
+    content: "";
+    position: absolute;
+    bottom: -25px; left: 25px;
+    margin-left: 0;
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: darkgray;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 200px;
+  margin: auto;
+  max-width: 100%;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:15px;
+  font-weight: 100;
+  padding:15px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:12px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:10px;
+  padding-left:15px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:12px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}

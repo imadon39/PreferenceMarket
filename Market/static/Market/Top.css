@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+*, *:before, *:after{
+  box-sizing:border-box;
+}
+
+html {
+    font-size : 60%; 
+}
+ 
+@media screen and (min-width :1000px){
+    html{ font-size : 80%;} 
+}
+ 
+@media screen and (min-width : 1400px) {
+    html{ font-size : 100%}; 
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+    
+}
+
+.Preference{
+    width:95%;
+    margin-left: 5%;
+    height: auto;
+}
+
+.Preference:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Market{
+    width:95%;
+    margin-left: 5%;
+    height: auto;
+}
+
+.Market:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Figure img{
+   width:37.5em; 
+   height:37.5em; 
+}
+
+.foo{
+  float:left;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.letter{
+  display: inline-block;
+  font-weight: 900;
+  font-size: 6.25em;
+  margin: 0.31em;
+}
+@media screen and (min-width :1000px){
+
+.letter{
+  display: inline-block;
+  font-weight: 900;
+  font-size: 6.25em;
+  margin: 0.31em;
+  position: relative;
+  color: black;
+  -moz-transform-style:preserve-3d;
+  -webkit-transform-style:preserve-3d;
+  -o-transform-style:preserve-3d;
+  -ms-transform-style:preserve-3d;
+  -moz-perspective:400;
+  -webkit-perspective:400;
+  -o-perspective:400;
+  -ms-perspective:400;
+  z-index: 1;
+}
+.letter:before, .letter:after{
+  position:absolute;
+  content: attr(data-letter);
+  transform-origin: top left;
+  top:0;
+  left:0;
+}
+.letter, .letter:before, .letter:after{
+  transition: all 0.3s ease-in-out;
+}
+
+.letter:before{
+  color: white;
+  text-shadow: 
+    -0.06em 0em 0.06em rgba(255,255,255,.8),
+    0.06em 0em 0.06em rgba(0,0,0,.8);
+  z-index: 3;
+  -moz-transform: 
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+  -webkit-transform:
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+  -o-transform: 
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+  -ms-transform: 
+    rotateX(0deg)
+    rotateY(-15deg)
+    rotateZ(0deg);
+}
+.letter:after{
+  color: rgba(0,0,0,.11);
+  z-index:2;
+  -moz-transform: 
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+  -webkit-transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+  -o-transform: 
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+  -ms-transform: 
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    skew(0deg,1deg);
+    
+}
+.letter:hover:before{
+  color: #fafafa;
+  -moz-transform: 
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+  -webkit-transform:
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+  -o-transform: 
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+  -ms-transform: 
+    rotateX(0deg)
+    rotateY(-40deg)
+    rotateZ(0deg);
+    
+}
+.letter:hover:after{
+  -moz-transform: 
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
+  -webkit-transform:
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
+  -o-transform: 
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
+  -ms-transform: 
+    scale(1.08,1)
+    rotateX(0deg)
+    rotateY(40deg)
+    rotateZ(0deg)
+    skew(0deg,22deg);
+    
+}
+
+}
+
+.Body:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Body{
+    width:100%;
+    height:auto;
+}
+
+.Play  {     
+    float:left;       
+    width:60%;
+    height:auto;
+    margin-top:6.25em;
+    }
+
+.Play i {
+        font-size:10em;
+        color:black;
+        transition:1.0s;
+　       -moz-transition:1.0s;
+　       -webkit-transition:1.0s;
+    }
+
+
+.Play:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Login{
+    float:left;
+    width:33.3333%;
+}
+
+.Registration{
+    float:left;
+    width:33.3333%;
+}
+
+.Tutorial{
+    float:left;
+    width:33.3333%;
+}
+
+
+.Play i:hover {
+ /* 変化後の色 */
+ color: #f83b66;
+ /* 回転させる */
+ -moz-transform: rotate(-360deg);
+ -webkit-transform: rotate(-360deg);
+ -o-transform: rotate(-360deg);
+ -ms-transform: rotate(-360deg);
+}
+
+.Figure{
+    float:left;
+    width:40%;
+    height: 37.5em;
+    margin: 0em;
+    margin-top: 0em;
+}

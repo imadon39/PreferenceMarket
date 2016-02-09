@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/check.css' %}" />
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+</head>
+
+<body>
+
+<div class = "Body">
+
+<div class = "Security" align="center">
+
+<form action="/market/{{ market.id }}/results/" method="post" name="form1">
+{% csrf_token %}
+
+
+<p>商品 : {{ selected_security }}<br></p>
+<p>取引量:{{amount}}<br></p>
+{% ifequal action "buy" %}
+	<p>取引:仕入れ<br></p>
+	<p>仕入れ値:{{ cost }}<br></p>
+{% endifequal%}
+{% ifequal action "sell" %}
+	<p>取引:返品<br></p>
+	<p>受取額:{{ cost }}<br></p>
+{% endifequal%}
+
+</div>
+
+<div class="Button" align="center">
+<p>
+<a class="btn" href="#" onclick="document.form1.submit();">Done</a>
+<a class="btn" onclick="window.opener.location.reload(),window.close();">Cancel</a>
+</p>
+</div>
+
+</form>
+</div>
+</body>
+</html>

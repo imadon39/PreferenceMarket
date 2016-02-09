@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+html {
+    font-size : 60%; 
+}
+ 
+@media screen and (min-width :1000px){
+    html{ font-size : 80%;} 
+}
+ 
+@media screen and (min-width : 1400px) {
+    html{ font-size : 100%}; 
+}
+
+body{
+        margin: 0;
+        color: black;
+        font-family:
+        'M+ C Type-1 (basic latin) Regular',
+        'M+ Type-1 (general-j) Regular', sans-serif;
+    }
+
+
+a { text-decoration: none;}
+a:hover { text-decoration: none;}
+
+.Body {
+
+            height: auto;
+            width: auto;
+            background-color: white;
+}
+
+.Head {
+            width: 100%;
+            height: 3.125em;
+            border-bottom: dashed gray; 
+            border-width: 0 0 0.1875em;
+            font-family: 'Open Sans Condensed', sans-serif;
+ 
+}
+
+.Head:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Title{
+    float:left;
+    width:70%;
+    height:100%;
+}
+
+.Title h1 {     
+                font-size : 2.5em;
+                margin:0em;
+                margin-left: 0.5em;
+            }
+
+
+.Logout {
+            float:left; 
+            width:27%;
+            margin-top:1.25em;
+            margin-right: 2%;        
+}
+
+.Logout a {
+        font-size:1.5em;
+        margin-left:0.5em;
+        color:black;
+        }
+
+.Logout a:hover{
+    color:deeppink;
+}
+
+.Imformation {
+    font-size : 1.875em;
+    height: 5em;
+    margin-top: 1em;
+    width:100%;
+    background-color: white;
+}
+
+.Imformation h2{
+    font-size:1.8em;
+}
+
+.Imformation:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+
+.Name{
+        float:left;
+        width: 33.3333%;
+        
+}
+
+.Score  {
+        float:left;
+        width: 33.3333%;
+    }
+
+.Rank  {
+        float:left;
+        width: 33.3333%;
+    }
+
+.Menu:after {  
+        content:"";
+        display:block;
+        clear: both;
+        
+    }
+.Menu{
+    padding-top: 7.5em;
+}
+
+.Menu img {
+        padding-top: 2.1875em;
+        width:8.75em;
+        height:8.75em;
+ }
+
+.Radius{
+    border-radius: 100%;
+    height: 17.5em;
+    width: 18.125em;
+    font-size: 1.25em;
+    transition:0.5s;
+　   -moz-transition:0.5s;
+　   -webkit-transition:0.5s;
+}
+
+.Radius:hover {
+ border-radius: 0em;
+}
+
+
+.Open  {       
+        float:left;
+        height: auto;
+        width: 33.3333%;
+}
+
+
+.Shop  {       
+        float:left;
+        height: auto;
+        width: 33.3333%;
+}
+
+.Performance  {       
+        float:left;
+        height: auto;
+        width: 33.3333%;
+}

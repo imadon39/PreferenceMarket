@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/accountant_table.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body>
+
+<div class="Body">
+
+{% if error_message %}
+    <p style="color:red;" align="center">まだ選択できません</p>
+{% else %}
+    <div class="Table">
+
+    <table class="table-fill">
+    <thead>
+    <tr>
+    <th class="text-center">日時</th>
+    <th class="text-center">仕入れ</th>
+    <th class="text-center">返品</th>
+    <th class="text-center">売上</th>
+    <th class="text-center">利益</th>
+    <th class="text-center">利益率</th>
+    <th class="text-center">商品別売上高</th>
+    </tr>
+    </thead>
+    <tbody class="table-honer">
+    {% for pr in pr_list %}
+    <tr>
+        <td class="text-center">{{pr.estimate_time}}</td>
+        <td class="text-center">{{pr.investment}}</td>
+        <td class="text-center">{{pr.returned}}</td>
+        <td class="text-center">{{pr.total_sales}}</td>
+        <script>
+        var profit = {{pr.total_sales}} + {{pr.returned}}- {{pr.investment}};
+        profit = Math.round( profit * 100 ) / 100 ;
+        </script>
+        <td class="text-center"><script>document.write(profit);</script></td>
+        <td class="text-center">{{pr.profit_rate}}</td>
+        </td>
+    <td class="text-center"><a href="/market/{{rs.id}}/{{product.id}}/{{pr.id}}/breakdown" target="breakdown" style="font-size:15px; color:hotpink;">Click!</a></td>     
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+    <div class="Breakdown">
+    <iframe width="100%" height="100%" name="breakdown" align="right" frameborder="0"></iframe>
+    </div>
+
+{% endif %}
+</div>
+
+</body>
+</html>

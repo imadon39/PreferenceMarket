@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/check_reward.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body>
+
+<div class="Body" align="center">
+
+    <table class="table-fill">
+    <thead>
+    <tr>
+    <th class="text-center">商品</th>
+    <th class="text-center">詳細</th>
+    <th class="text-center">売値</th>
+    <th class="text-center">粗利</th>
+    <th class="text-center">仕入れ数</th>
+    <th class="text-center">販売率</th>
+    <th class="text-center">定価販売</th>
+    <th class="text-center">割引販売</th>
+    <th class="text-center">売上</th>
+    </tr>
+    </thead>
+    <tbody class="table-honer">
+    {% for b in breakdown %}
+        <tr>
+        <td class="text-center">{{b.product_name }}</td>
+        <td class="text-center">
+        {% for att in b.attributes %}
+            {{att }}
+        {% endfor %}
+        </td>
+        <td class="text-center">{{b.selling_price}}</td>
+        <td class="text-center">{{b.gross_margin}}</td>
+        <td class="text-center">{{b.purchase_number}}</td>
+        <td class="text-center">{{b.sale_rate}}</td>
+        <td class="text-center">{{b.sales}}</td>
+        <td class="text-center">{{b.discount}}</td>
+        <script>
+        var sales = {{b.sales}};
+        var discount = {{b.discount}};
+        var total = sales + discount;
+        </script>
+        <td class="text-center"><script>document.write(total);</script></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+<p>あなたは<a style="color:deeppink;">{{pr.investment}}</a>ポイント投資して<a style="color:deeppink;">{{pr.total_sales}}</a>ポイント獲得しました!</p>
+<p>利益率は<a style="color:deeppink;">{{pr.profit_rate}}</a>です</p>
+<p>仕入れ完了で3000ポイントもゲット！</p>
+<br>
+<a class="btn" href="/market/{{rs.id}}/RetailStore_page">OK</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/normal.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+    .Body{
+        background-color: #eee;
+		background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), 
+		linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+		background-size:60px 60px;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div class="Body" align ="center">
+
+<div class = "Radius">
+<p style="margin-top:15px;">Created!</p>
+<br style="margin-bottom:1.5em;">
+<p style="font-size:1em;">
+<p style="font-size:25px;">Attribute</p>
+{% for att in attributes %}
+{{att}}
+{% endfor %}
+<br>
+<p style="font-size:25px;">Level</p>
+{% for level in levels %}
+	{{level}}
+{% endfor %}
+</p>
+<br>
+<br style="margin-bottom:5em;">
+<a class="btn" href="/market/{{rs.id}}/{{ market.id }}/create_products/">ADD IDEA</a>
+<a class="btn" href="/market/{{rs.id}}/RetailStore_page/">SHOP PAGE</a>
+</div>
+</div>
+</body>
+</html>
+
+
+
+

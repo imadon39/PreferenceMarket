@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/choice.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body>
+
+<div class="Body">
+
+<div class="Head">
+<div class="Title">
+<h1>CREATE PRODUCTS</h1>
+</div>
+<div class="shoppage" align="right">
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOP PAGE </a>
+</div>
+</div>
+
+<div class="ShopLine">
+
+{% for market in create_market_list %}
+
+    <div class="shop" align="center">
+    <h2>{{market.name}}</h2>
+    <div class="closetime">
+    Close Time <br>
+    {{market.close_time}}
+    </div>
+    <div class="Button">
+    {% if participation|RewardCheckd:market %}
+        <a href="/market/{{rs.id}}/{{ market.id }}/create_products/" class="btn">
+        Choice
+        </a>
+    {% else %}
+        集計中です
+    {% endif %}
+    </div>
+    </div>
+
+{% endfor %}
+
+</div>
+</div>
+
+</body>
+</html>

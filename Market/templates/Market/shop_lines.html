@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <meta name ="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/shop_lines.css' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body>
+
+
+<div class="Body">
+
+<div class = "Head">
+<div class="Title">
+<h1>SHOP LINES</h1>
+</div>
+<div class="shoppage" align="right">
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOP PAGE </a>
+</div>
+</div>
+
+<div class="ShopLines">
+
+{% for market in market_list %}
+    <div class="Market" align="center">
+
+    <h1>{{market.name}}</h1>
+
+    <div class="Table" align="center">
+
+    <table class="table-fill">
+    <thead>
+    <tr>
+    <th class="text-center">商品</th>
+    <th class="text-center">在庫</th>
+    </tr>
+    </thead>
+    <tbody class="table-honer">
+    {% for security in market|MarketFilter %}
+        <tr>
+        <td class="text-center">{{security.product_name}}</td>
+        <td class="text-center">{{ security|SecurityGet:ps_list}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+    </div>
+
+{% endfor %}  
+
+</div> 
+
+
+</div>

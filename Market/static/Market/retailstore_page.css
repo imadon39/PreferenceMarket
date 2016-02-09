@@ -1,0 +1,304 @@
+@charset "UTF-8";
+
+html {
+    font-size : 60%; 
+}
+ 
+@media screen and (min-width :1000px){
+    html{ font-size : 80%;} 
+}
+ 
+@media screen and (min-width : 1400px) {
+    html{ font-size : 100%}; 
+}
+
+
+body{
+        margin: 0;
+        font-family:
+        'M+ C Type-1 (basic latin) Regular',
+        'M+ Type-1 (general-j) Regular', sans-serif;
+        
+    }
+
+a { text-decoration: none;}
+a:hover { text-decoration: none;}
+
+
+.Body {
+
+            height: auto;
+            width: auto;
+}
+
+.Head {
+            width: 100%;
+            height: 3.125em;
+            border-bottom: dashed gray; 
+            border-width: 0 0 0.1875em;
+            font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.Head img{
+    width:2.5em;
+    height:2.5em;
+}
+
+.Head:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+
+.ShopName{
+    float:left;
+    width:65%;
+    height:100%;
+    font-family:
+        'M+ C Type-1 (basic latin) Regular',
+        'M+ Type-1 (general-j) Regular', sans-serif;
+}
+
+.ShopName h1 {     
+                font-size :2.5em;
+                margin-top:0em;
+                margin-left: 2%;
+            }
+
+.Image {    
+            float:left;
+            width: 3%;
+            height:97%;
+            margin: 0em;
+            margin-top: 0.3125em;
+            margin-left: 2%;
+            }
+
+.Logout {
+            float:left; 
+            width:27%;
+            margin-top:1.25em;
+            margin-right: 3%;      
+}
+
+.Logout a {
+        font-size:1.5em;
+        margin-left:0.5em;
+        color:black;
+        }
+
+.Logout a:hover{
+    color:deeppink;
+}
+
+.Top {
+    height:6.25em;
+    width:100%;
+    margin-top:1.25em;
+}
+
+.Top h1{
+    font-size: 2.5em;
+}
+
+.Top:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Name{
+    float:left;
+    width: 30%;
+    margin-top:2.5em;
+    -webkit-transition: 1s ease-in-out;
+}
+
+.Name:hover{
+   background:#ffd700;
+    -webkit-border-top-left-radius: 3.125em;
+    -webkit-border-top-right-radius: 3.125em;
+    -moz-border-radius-topleft: 3.125em;
+    -moz-border-radius-topright: 3.125em;
+    -webkit-border-bottom-right-radius: 3.125em;
+    -webkit-border-bottom-left-radius: 3.125em;
+    -moz-border-radius-bottomright: 3.125em;
+    -moz-border-radius-bottomleft: 3.125em;
+}
+
+.Score{
+    float:left;
+    width: 30%;
+    margin-top: 2.5em;
+    -webkit-transition: 1s ease-in-out;     
+}
+
+.Score:hover{
+    background:hotpink;
+    -webkit-border-top-left-radius: 3.125em;
+    -webkit-border-top-right-radius: 3.125em;
+    -moz-border-radius-topleft: 3.125em;
+    -moz-border-radius-topright: 3.125em;
+    -webkit-border-bottom-right-radius: 3.125em;
+    -webkit-border-bottom-left-radius: 3.125em;
+    -moz-border-radius-bottomright: 3.125em;
+    -moz-border-radius-bottomleft: 3.125em;
+}
+
+.Target{
+    float:left;
+    width:40%;
+    height: auto;
+    margin-top: 1.25em;
+}
+
+.Target:after {  
+        content:"";
+        display:block;
+        clear: both;
+    }
+
+.Target p{
+    margin:0.125em;
+    font-size: 1.25em;
+}
+
+.Target h1{
+    margin: 0em;
+    font-size: 1.875em;
+}
+
+.Target i{
+    color:red;
+}
+
+.Figure{
+    float:left;
+    width:42%;
+    -webkit-transition: 0.3s ease-in-out;
+}
+
+.Figure img{
+    width:7.5em;
+    height:7.5em;
+}
+
+.Figure:hover{
+    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(mirror=1);
+}
+
+.TargetInfo{
+    float:left;
+    width:58%;
+    margin-top:0.3125em;
+}
+
+.Menu:after {  
+        content:"";
+        display:block;
+        clear: both;        
+    }
+
+.Menu{
+    height:auto;
+    width:100%;
+    margin-top:12em;
+    font-size:1em;
+}
+
+.Menu img{
+    margin-top: 1.25em;
+    margin-bottom: 0.3125em;
+}
+
+.Radius{
+    border-radius: 100%;
+    height: 18em;
+    width: 18em;
+    transition:0.5s;
+　   -moz-transition:0.5s;
+　   -webkit-transition:0.5s;
+}
+
+.Radius img{
+    width:10em;
+    height:10em;
+}
+.Radius:hover {
+ border-radius: 0em;
+}
+
+.Open  {       
+        float:left;
+        width: 20%;
+}
+
+
+.Shop  {
+        float:left;
+        width:20%;
+}
+
+.Stock  {
+        float:left;
+        width:20%;
+}
+
+.Create  {
+        float:left;
+        width:20%;
+}
+
+.Performance  {
+        float:left;
+        width:20%;
+}
+
+
+
+.btn {
+    position:relative;
+    background-color:#6fba26;
+    padding:0.5em;
+    font-family: 'Open Sans', sans-serif;
+    font-size:0.9375em;
+    text-decoration:none;
+    color:#fff;
+    background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
+    box-shadow: inset 0em 0.0625em 0em #b2f17f, 0em 0.375em 0em #3d6f0d;
+    border-radius: 5px;
+}
+
+.btn:active {
+    top:0.4375em;
+    background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+    box-shadow: inset 0em 0.0625em 0em #b2f17f, inset 0em -0.0625em 0em #3d6f0d;
+    color: #156785;
+    text-shadow: 0em 0.0625em 0em rgba(255,255,255,0.3);
+    background: rgb(44,160,202);
+}
+
+.btn::before {
+    background-color:#072239;
+    content:"";
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    padding-left:0.125em;
+    padding-right:0.125em;
+    padding-bottom:0.25em;
+    left:-0.125em;
+    top:0.3125em;
+    z-index:-1;
+    border-radius: 0.375em;
+    box-shadow: 0em 0.0625em 0em #fff;
+}
+
+.btn:active::before {
+    top:-0.125em;
+}

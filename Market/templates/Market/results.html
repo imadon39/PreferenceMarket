@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/results.css' %}" />
+
+<script>
+var sale_rate = {{sale_rate|safe}};
+var count = 0
+</script>
+
+</head>
+
+<body>
+
+<div class = "Body">
+
+<div class = "Security" align="center">
+
+<p>予想販売比率</p>
+
+{% for security in market.security_set.all %}
+    {{ security.product_name }} --
+       <script>
+    	document.write(sale_rate[count]);
+    	count +=1
+    	</script>
+    	<br>
+    
+{% endfor %}
+
+<br>
+取引後ポイント -- {{player.point}}
+
+</div>
+
+<div class="Button" align="center">
+<a class="btn" onclick="window.opener.location.reload(),window.close();">Update</a>
+</div>
+
+</div>
+

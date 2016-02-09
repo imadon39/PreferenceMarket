@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+{% load Market_extras %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/choice.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+<div class = "Head">
+<div class = "Title">
+<h1>ADD NEW CATEGORY</h1>
+</div>
+<div class = "shoppage" align ="right">
+<a href="/market/{{rs.id}}/RetailStore_page"><i class="fa fa-home"></i> SHOPPAGE </a>
+</div>
+</div>
+
+<div class="Body" align="center">
+
+<h1><a style="color:hotpink;">C</a>hoice Category</h1>
+
+<div class="ShopLine">
+
+{% for market in market_list %}
+
+	<div class="shop" align="center">
+	<h2>{{market.name}}</h2>
+	<div class="closetime">
+    <p>Close Time <br> {{market.close_time}}</p>
+    </div>
+    <div class="Button">
+    <a class="btn" href="/market/{{rs.id}}/{{ market.id }}/participate_market/">Choice</a>
+    </div>
+    </div>
+
+{% endfor %}
+
+</div>
+
+</div>
+</body>

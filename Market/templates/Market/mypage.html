@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+
+<head>
+    <meta charset="utf-8">
+    <title>My page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/mypage.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+
+<body link="black" vlink="black">
+
+<div class = "Body">
+
+<div class = "Head">
+<div class = "Title">
+<h1>MYPAGE</h1>
+</div>
+<div class = "Logout" align ="right">
+<a href="/market/mypage_tutorial"><i class="fa fa-question-circle"></i> How to Play</a>
+<a href="/market/logout_view"> <i class="fa fa-sign-out"></i>LOGOUT</a>
+</div>
+</div>
+
+<div class = "Imformation" align ="center">
+<div class = "Name" align ="center">
+<h2>PLAYER : {{player.name}}</h2>
+</div>
+<div class = "Score" align ="center">
+<h2>SCORE : {{player.point}}</h2>
+</div>
+<div class = "Rank" align ="center">
+<h2>RANKING : <a style="color:hotpink">{{rank}}</a> / {{total}}</h2>
+</div>
+</div>
+
+<div class = "Menu" align ="center">
+
+<div class = "Open" align ="center">
+<div class = "Radius" style="background-color:palegreen;">
+<a href="/market/open/">
+<img src="{% static 'images/open.png' %}"/>
+<br>
+Open New Shops
+</a>
+</div>
+</div>
+
+<div class = "Shop" align ="center">
+<a href="/market/RetailStore_detail/">
+<div class = "Radius" style="background-color:hotpink;">
+<img src="{% static 'images/shop.png' %}" />
+<br>
+Your Shops
+</a>
+</div>
+</div>
+
+<div class = "Performance" align ="center">
+<div class = "Radius" style="background-color:deepskyblue;">
+<a href="/market/history/">
+<img src="{% static 'images/performance.png' %}"/>
+<br>
+Corporate Performance
+</a>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

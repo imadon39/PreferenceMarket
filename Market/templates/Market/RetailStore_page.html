@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+
+<head>
+    <meta charset="utf-8">
+    <title>{{rs.name}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/retailstore_page.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+</head>
+
+
+<body link="black" vlink="black">
+
+<div class="Body">
+
+<div class = "Head">
+<div class = "Image">
+<img src= "{{rs.figure.img_url}}/{{rs.figure.name}}/{{rs.color.img_url}}"/>
+</div>
+<div class = "ShopName">
+<h1>{{rs.name}}</h1>
+</div>
+<div class = "Logout" align ="right">
+<a href="/market/{{rs.id}}/shoppage_tutorial"><i class="fa fa-question-circle"></i> How to Play</a>
+<a href="/market/mypage"><i class="fa fa-home"></i> MYPAGE</a>
+<a href="/market/logout_view"><i class="fa fa-sign-out"></i> LOGOUT</a>
+</div>
+</div>
+
+<div class="Top">
+
+<div class = "Name" align ="right">
+<h1>PLAYER : {{player.name}}</h1>
+</div>
+<div class="Target" align="center">
+<h1><i class="fa fa-exclamation-triangle"></i> TARGET <i class="fa fa-exclamation-triangle"></i></h1>
+<div class = 'Figure' align ='right'>
+<img src= '{{rs.area.gender_img_url}}'/>
+</div>
+<div class = 'TargetInfo' align ='left'>
+<p>Age : {{rs.area.age_lower}} - {{rs.area.age_upper}}</p>
+<p>Attribute : {{rs.area.attribute}}</p>
+<p>{{rs.area.description}}</p>
+</div>
+</div>
+<div class = "Score" align ="left">
+<h1>SCORE : {{player.point}}</h1>
+</div>
+</div>
+
+<div class = "Menu" align ="center">
+
+<div class = "Open" align ="center">
+<div class = "Radius" style="background-color:hotpink;">
+<a href="/market/{{rs.id}}/new_market/">
+<img src="{% static 'images/open.png' %}"/>
+<br>
+Add New Categories
+</a>
+</div>
+</div>
+
+<div class = "Shop" align ="center">
+<div class = "Radius" style="background-color:darkgray;">
+<a href="/market/{{rs.id}}/shop_lines/">
+<img src="{% static 'images/ShopLine.png' %}"/>
+<br>
+Shop Lines
+</a>
+</div>
+</div>
+
+<div class = "Stock" align ="center">
+<div class = "Radius" style="background-color:gainsboro;">
+<a href="/market/{{rs.id}}/stock/">
+<img src="{% static 'images/purchase.png' %}"/>
+<br>
+Purchase Stocks
+</a>
+</div>
+</div>
+
+<div class = "Create" align ="center">
+<div class = "Radius" style="background-color:mediumturquoise;">
+<a href="/market/{{rs.id}}/create/">
+<img src="{% static 'images/idea.png' %}"/>
+<br>
+Create Products
+</a>
+</div>
+</div>
+
+<div class = "Performance" align ="center">
+<div class = "Radius" style="background-color:gold;">
+<a href="/market/{{rs.id}}/accountant/">
+<img src="{% static 'images/performance.png' %}"/>
+<br>
+Accountants
+</a>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+

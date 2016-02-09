@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/choice_color.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+	<link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+<div class = "Head">
+<div class = "Title">
+<h1>OPEN NEW SHOP</h1>
+</div>
+<div class = "Mypage" align ="right">
+<a href="/market/mypage"><i class="fa fa-home"></i> MYPAGE </a>
+</div>
+</div>
+
+<div class = "Detail" align ="center">
+
+<h1>Choice Shop <a style="color:hotpink;">D</a>esign</h1>
+
+{% for color in colors %}
+
+<div class = "Shop" align ="center">
+<img src= "{{shop.img_url}}/{{shop.name}}/{{color.img_url}}" width="150" height="150" id="open" />
+<br>
+<a class="btn" href="/market/{{area.id}}/{{shop.id}}/{{color.id}}/give_name/">Choice</a>
+</div>
+
+{% endfor %}
+</div>
+
+</body>
+</html>

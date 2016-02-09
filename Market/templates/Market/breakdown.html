@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/breakdowns.css' %}">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body link="hotpink" vlink="hotpink">
+
+<div class="Body" align="center">
+
+<h1 style="font-size:20px;"><a style="color:gold;">M</a>erchandise Sale</h1>
+<table class="table-fill">
+<thead>
+<tr>
+    <th class="text-center">商品</th>
+    <th class="text-center">詳細</th>
+    <th class="text-center">売値</th>
+    <th class="text-center">仕入数(ロット)</th>
+    <th class="text-center">販売率</th>
+    <th class="text-center">売上</th>
+</tr>
+</thead>
+<tbody class="table-honer">
+
+{% for breakdown in breakdowns %}
+<tr>
+    <td class="text-center">{{breakdown.product_name}}</td>
+    <td class="text-center">{{breakdown.attribute_name}}</td>
+    <td class="text-center">{{breakdown.selling_price}}</td>
+    <td class="text-center">{{breakdown.purchase_number}}</td>
+    <td class="text-center">{{breakdown.sale_rate}}</td>
+    <td class="text-center">{{breakdown.sales}}</td>
+    </td>
+</tr>
+{% endfor %}    
+
+</tbody>
+</table>
+</div>
+
+</body>
+</html>

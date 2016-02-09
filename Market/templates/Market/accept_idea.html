@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Preference Market</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'Market/normal.css' %}" />
+    <style type="text/css">
+
+    body{
+    	background-color: lemonchiffon;
+    }
+
+    .Body{
+    	background-color:white;
+		background-image:
+		radial-gradient(orange 9px, transparent 10px),        
+		repeating-radial-gradient(orange 0, orange 4px, transparent 5px, transparent 20px, orange 21px, orange 25px, transparent 26px, transparent 50px);    
+		background-size: 30px 30px, 90px 90px; 
+		background-position: 0 0;
+    }
+
+    .btn {
+	    background-color:#3bb3e0;
+	    padding:10px;
+	    position:relative;
+	    font-size:12px;
+	    text-decoration:none;
+	    color:#fff;
+	    background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgb(44,160,202)),
+	    color-stop(1, rgb(62,184,229))
+	    );
+	    -webkit-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    -moz-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    -o-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+	    -webkit-border-radius: 5px;
+	    -moz-border-radius: 5px;
+	    -o-border-radius: 5px;
+	    border-radius: 5px;
+	}
+
+	.btn::before {
+	    background-color:#072239;
+	    content:"";
+	    display:block;
+	    position:absolute;
+	    width:100%;
+	    height:100%;
+	    padding-left:2px;
+	    padding-right:2px;
+	    padding-bottom:4px;
+	    left:-2px;
+	    top:5px;
+	    z-index:-1;
+	    -webkit-border-radius: 6px;
+	    -moz-border-radius: 6px;
+	    -o-border-radius: 6px;
+	    border-radius: 6px;
+	    -webkit-box-shadow: 0px 1px 0px #fff;
+	    -moz-box-shadow: 0px 1px 0px #fff;
+	    -o-box-shadow: 0px 1px 0px #fff;
+	    box-shadow: 0px 1px 0px #fff;
+	}
+
+	.btn:active {
+	    color:#156785;
+	    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+	    background:rgb(44,160,202);
+	    -webkit-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    -moz-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    -o-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+	    top:7px;
+	}
+
+	.btn:active::before {
+	    top:-2px;
+	}
+
+	</style>
+</head>
+
+<body>
+
+<div class="Body" align="center">
+<div class="Radius">
+<p>アイディアが<br>採用されました!</p>
+<img src="{% static 'images/welcome.png' %}" width="100" height="100" style="margin:0px;"/>
+{% for designer in designers %}
+
+	<p style="font-size:15px;">{{designer.newIdea}}</p>
+	
+{% endfor %}
+<p style="font-size:20px;">{{point}}ポイントゲット！</p>
+<br>
+<div class="Button">
+<a class="btn" href="/market/{{rs.id}}/RetailStore_page">Shop Page</a>
+</div>
+</div>
+</div>
+</body>
+</html>

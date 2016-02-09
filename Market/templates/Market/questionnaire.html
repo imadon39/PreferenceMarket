@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <title>Preference Market</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Market/questionnaire.css' %}" />
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+
+</head>
+
+<body>
+
+<div class="Body" align="center">
+
+<p>実験は以上です。ご協力ありがとうございました。</p>
+<p>集計が終わるまでしばらくお待ちください。</p>
+<br>
+<p>待っている間にアンケートのご協力をお願いします。</p>
+<p>協力していただけたら1000ポイントプレゼントします。</p>
+
+<a class="btn" href="{{link}}">いいよ</a>
+<a class="btn" href="{{back_url}}">やめとく</a>
+
+</div>
+</body>
