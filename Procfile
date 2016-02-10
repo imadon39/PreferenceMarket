@@ -1,0 +1,1 @@
+web: gunicorn --env DJANGO_SETTINGS_MODULE=Market.settings Market.wsgi --log-file -
