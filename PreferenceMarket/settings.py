@@ -23,7 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*phn&j(-i5zq6u1!qj_j!gfp8#24ob+102j7m$qnkjzt0j&oo&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -38,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Market',
+    'gunicorn',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,8 +52,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'PreferenceMarket.urls'
-
-DEBUG = True
 
 
 TEMPLATES = [
@@ -79,12 +77,18 @@ WSGI_APPLICATION = 'PreferenceMarket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if 'imaimirai-no-MacBook-Pro.local' in hostname:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
 
 
 # Internationalization
@@ -108,4 +112,11 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+if 'imaimirai-no-MacBook-Pro.local' in hostname:
+    DEBUG = True
+    TEMPLATE_DEBUG = True
+else:
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+    ALLOWED_HOSTS = ['*']
 
